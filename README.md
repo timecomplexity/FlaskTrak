@@ -31,3 +31,43 @@ You will need to install `MySQLdb` for python if you don't already have it insta
 sudo apt install python3-mysqldb
 ```
 
+### Start Server On Boot
+This section outlines how to easily set up the server to run on boot. This is ideal for an instance where you want to run the server on something like a Raspberry Pi.
+
+Create a bash script to actually start the server, replacing `path/to/Flask/Trak/server.py` with your `server.py` location. NOTE: make sure to run `chmod +x name-of-your-script.sh` to allow for executing it!
+
+```bash
+#!/bin/bash
+
+echo "Starting Flask Server . . ."
+
+export FLASK_APP=/path/to/FlaskTrak/server.py
+flask run --host=0.0.0.0
+
+
+echo "Server Closed."
+```
+
+Create a `.service` file inside of `/lib/systemd/system`. It should look something like this, replacing `/path/to/your/flask/script.sh` with the flask script you previously created:
+
+```bash
+[Unit]
+Description=Flask Server Service
+
+[Service]
+ExecStart=/path/to/your/flask/script.sh
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Run the following commands to start the service and enable it on boot, replacing `your_service_name` with the `.service` file you created earlier.
+
+```bash
+sudo systemctl start your_service_name.service
+sudo systemctl stop your_service_name.service
+sudo systemctl enable your_service_name.service
+```
+
+After a reboot, it should start automatically after a few seconds.
+

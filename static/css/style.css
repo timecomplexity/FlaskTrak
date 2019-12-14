@@ -17,6 +17,20 @@ p {
 	padding: 2em;
 }
 
+#progressarea {
+	width: 100%;
+	background-color: F5F5F5;
+}
+
+#progressbar {
+	width: 1%;
+	height: 4em;
+	background-color: green;
+	text-align: center;
+	line-height: 4em;
+	color: #FFF;
+}
+
 .content {
 	margin-top: 6em;
 }
