@@ -32,7 +32,7 @@ sudo apt install python3-mysqldb
 ```
 
 ### Start Server On Boot
-This section outlines how to easily set up the server to run on boot. This is ideal for an instance where you want to run the server on something like a Raspberry Pi.
+This section outlines how to easily set up the server to run on boot. This is ideal for an instance where you want to run the server on something like a Raspberry Pi. It might also be a good idea to configure a static IP to make it easier to connect to the server.
 
 Create a bash script to actually start the server, replacing `path/to/Flask/Trak/server.py` with your `server.py` location. NOTE: make sure to run `chmod +x name-of-your-script.sh` to allow for executing it!
 
